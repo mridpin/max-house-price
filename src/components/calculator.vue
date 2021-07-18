@@ -7,13 +7,64 @@
           <input
             class="input"
             type="number"
-            placeholder="1800"
+            placeholder="1500"
             min="0"
-            v-on:focusout="updateIncome"
             v-model="income"
           />
         </div>
-        <p>¿No conoces tus ingresos netos? Calcúlalos aquí</p>
+        <p>
+          ¿No conoces tus ingresos netos?
+          <a
+            href="https://cincodias.elpais.com/herramientas/calculadora-sueldo-neto/"
+            target="blank"
+            >Calcúlalos gratis aquí</a
+          >
+        </p>
+      </div>
+      <div class="field">
+        <label class="label"
+          >Intereses anuales a <em>tipo fijo</em> (TIN):</label
+        >
+        <div class="control">
+          <input
+            class="input"
+            type="number"
+            placeholder="2.0"
+            min="0"
+            v-model="interest"
+          />
+        </div>
+        <p>
+          ¿No tienes claro el TIN?
+          <a
+            href="https://www.idealista.com/hipotecas/comparador-hipotecas/"
+            target="blank"
+            >Empieza buscando ofertas aquí</a
+          >
+        </p>
+      </div>
+      <div class="field">
+        <label class="label">Años:</label>
+        <div class="control">
+          <input
+            class="input"
+            type="number"
+            placeholder="30"
+            min="0"
+            v-model="years"
+          />
+        </div>
+        <p>
+          A más años pagarás más intereses
+        </p>
+      </div>
+      <div class="columns">
+        <div class="column is-10">
+          <a class="button is-medium is-fullwidth is-primary" v-on:click="updateIncome">Calcular</a>
+        </div>
+        <div class="column is-2">
+          <a class="button is-medium is-fullwidth is-info is-outlined">Borrar</a>
+        </div>
       </div>
     </div>
     <div class="section container">
@@ -25,7 +76,7 @@
           </li>
           <li>
             El precio máximo de la vivienda que puedes permitirte es:
-            <strong> {{ price }} euros</strong>
+            <strong> {{ price.toFixed(2) }} euros</strong>
           </li>
         </ul>
       </div>
@@ -42,20 +93,45 @@
     },
     data () {
       return {
-        price: 0
+        price: 0,
+        // income : 0,
+        // interest: 0,
+        // years: 0
       }
     },
     methods: {
       updateIncome() {
-        this.price = this.income * 0.30 * 360;
-        this.calculateMortgatePayment(100000.0, 1.0, 360);
+        // this.calculateMortgatePayment(this.principal, this.interest, this.years * 12);
+        this. price = this.calculateMaxPrincipal(this.income * 0.3, this.interest, this.years * 12) / 0.8;
       },
-      calculateMortgatePayment(amount, ipa, n) {
-        const i = ipa / 12;
-        const a = (1-((1+i) ** (-n))) / i;
-        console.log(a)
-        const payments = amount / a;
-        console.log(payments);
+      /**
+        p = principal
+        ipa = interest per annum
+        n = number of payments. if 30 years then 30*12=360
+       */
+      // calculateMortgatePayment(p, ipa, n) {
+      //   const i = ipa / 12 / 100;
+      //   const denom = ((1+i) ** -n);
+      //   const a = (1 - denom) / i;
+      //   const q = p / a;
+      //   console.log(q)
+      //   return q;
+      // },
+      /**
+        q = available monthly payment, must be 30% of net monthly income
+        ipa = interest per annum
+        n = number of payments. if 30 years then 30*12=360
+       */
+      calculateMaxPrincipal(q, ipa, n) {
+        console.log(q)
+        console.log(ipa)
+        console.log(n)
+        const i = ipa / 12 / 100;
+        const denom = ((1+i) ** -n);
+        const a = (1 - denom) / i;
+        const p = q * a;
+        console.log(p)
+        return p;
       }
     },
     computed: {
