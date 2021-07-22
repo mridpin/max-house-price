@@ -1,0 +1,83 @@
+<section class="section calculator">
+  <div class="container">
+    <div class="field">
+      <label class="label">Ingresos netos mensuales:</label>
+      <div class="control">
+        <input
+          class="input"
+          type="number"
+          placeholder="1500"
+          min="0"
+          [(ngModel)]="income"
+        />
+      </div>
+      <p>
+        ¿No conoces tus ingresos netos?
+        <a
+          href="https://cincodias.elpais.com/herramientas/calculadora-sueldo-neto/"
+          target="blank"
+          >Calcúlalos gratis aquí</a
+        >
+      </p>
+    </div>
+    <div class="field">
+      <label class="label">Intereses anuales a <em>tipo fijo</em> (TIN):</label>
+      <div class="control">
+        <input
+          class="input"
+          type="number"
+          placeholder="2.0"
+          min="0"
+          [(ngModel)]="ipa"
+        />
+      </div>
+      <p>
+        ¿No tienes claro el TIN?
+        <a
+          href="https://www.idealista.com/hipotecas/comparador-hipotecas/"
+          target="blank"
+          >Empieza buscando ofertas aquí</a
+        >
+      </p>
+    </div>
+    <div class="field">
+      <label class="label">Años:</label>
+      <div class="control">
+        <input
+          class="input"
+          type="number"
+          placeholder="30"
+          min="0"
+          [(ngModel)]="years"
+        />
+      </div>
+      <p>A más años pagarás más intereses</p>
+    </div>
+    <div class="columns">
+      <div class="column is-10">
+        <a
+          class="button is-medium is-fullwidth is-primary"
+          (click)="calculateMortgage()"
+          >Calcular</a
+        >
+      </div>
+      <div class="column is-2">
+        <a class="button is-medium is-fullwidth is-info is-outlined">Borrar</a>
+      </div>
+    </div>
+  </div>
+  <div class="section container">
+    <div class="content is-large">
+      <ul>
+        <li>
+          La cuota mensual máxima que te puedes permitir es:
+          <strong>{{ income ? income * 0.3 : 0 }} euros</strong>. La cuota máxima es un 30% de tus ingresos netos.
+        </li>
+        <li>
+          El precio máximo de la vivienda que puedes permitirte es:
+          <strong> {{ maxHousePrice }} euros</strong>. El banco solo te prestará el 80% de esta cantidad.
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
