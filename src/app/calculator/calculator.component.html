@@ -62,7 +62,7 @@
         >
       </div>
       <div class="column is-2">
-        <a class="button is-medium is-fullwidth is-info is-outlined">Borrar</a>
+        <a class="button is-medium is-fullwidth is-info is-outlined" (click)="clearFields()">Borrar</a>
       </div>
     </div>
   </div>
@@ -71,11 +71,11 @@
       <ul>
         <li>
           La cuota mensual máxima que te puedes permitir es:
-          <strong>{{ income ? income * 0.3 : 0 }} euros</strong>. La cuota máxima es un 30% de tus ingresos netos.
+          <strong>{{ monthlyPayment ? monthlyPayment.toFixed(2) : (0).toFixed(2)}} euros</strong>. La cuota máxima es un 30% de tus ingresos netos.
         </li>
         <li>
           El precio máximo de la vivienda que puedes permitirte es:
-          <strong> {{ maxHousePrice }} euros</strong>. El banco solo te prestará el 80% de esta cantidad.
+          <strong> {{ maxHousePrice.toFixed(2) }} euros</strong>. El banco solo te prestará el 80% de esta cantidad.
         </li>
       </ul>
     </div>
