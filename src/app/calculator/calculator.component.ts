@@ -15,6 +15,8 @@ export class CalculatorComponent implements OnInit {
   monthlyPayment: number;
   maxHousePrice: number;
 
+  canSend: boolean = false;
+
   constructor(
     private mortgageCalc: MortgageCalculatorService,
     private adapter: MortgageAdapter
@@ -45,5 +47,12 @@ export class CalculatorComponent implements OnInit {
     this.years = '';
     this.monthlyPayment = 0;
     this.maxHousePrice = 0;
+    this.canSend = false;
+  }
+
+  checkSend(): void {
+    if (this.years && this.income && this.ipa) {
+      this.canSend = true;
+    }
   }
 }
