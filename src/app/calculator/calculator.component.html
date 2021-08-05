@@ -1,5 +1,13 @@
 <article class="section calculator">
   <div class="container">
+    <div class="content">
+      <a class="button title is-5" (click)="toggleInfo(true)">More info...</a>
+    </div>
+  </div>
+  <div *ngIf="isInfo">
+    <app-info-panel (event)="toggleInfo($event)"></app-info-panel>
+  </div>
+  <div class="container">
     <div class="field">
       <label class="label">Ingresos netos mensuales:</label>
       <div class="control">
@@ -62,11 +70,16 @@
           class="button is-medium is-fullwidth is-primary"
           (click)="calculateMortgage()"
           [disabled]="!canSend"
-          >Calcular</button
         >
+          Calcular
+        </button>
       </div>
       <div class="column is-2">
-        <a class="button is-medium is-fullwidth is-info is-outlined" (click)="clearFields()">Borrar</a>
+        <a
+          class="button is-medium is-fullwidth is-info is-outlined"
+          (click)="clearFields()"
+          >Borrar</a
+        >
       </div>
     </div>
   </div>
@@ -75,11 +88,17 @@
       <ul>
         <li>
           La cuota mensual máxima que te puedes permitir es:
-          <strong>{{ monthlyPayment ? monthlyPayment.toFixed(2) : (0).toFixed(2)}} euros</strong>. La cuota máxima es un 30% de tus ingresos netos.
+          <strong
+            >{{
+              monthlyPayment ? monthlyPayment.toFixed(2) : (0).toFixed(2)
+            }}
+            euros</strong
+          >. La cuota máxima es un 30% de tus ingresos netos.
         </li>
         <li>
           El precio máximo de la vivienda que puedes permitirte es:
-          <strong> {{ maxHousePrice.toFixed(2) }} euros</strong>. El banco solo te prestará el 80% de esta cantidad.
+          <strong> {{ maxHousePrice.toFixed(2) }} euros</strong>. El banco solo
+          te prestará el 80% de esta cantidad.
         </li>
       </ul>
     </div>

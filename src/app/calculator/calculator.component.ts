@@ -15,6 +15,7 @@ export class CalculatorComponent implements OnInit {
   monthlyPayment: number;
   maxHousePrice: number;
 
+  isInfo: boolean = false;
   canSend: boolean = false;
 
   constructor(
@@ -54,5 +55,9 @@ export class CalculatorComponent implements OnInit {
     if (this.years && this.income && this.ipa) {
       this.canSend = true;
     }
+  }
+
+  toggleInfo($event: boolean): void {
+    this.isInfo = $event;
   }
 }
