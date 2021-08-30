@@ -1,15 +1,36 @@
 <div class="modal is-active">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Modal title</p>
-        <button class="delete" aria-label="close" (click)="closeModal()"></button>
-      </header>
-      <section class="modal-card-body">
-        <p>hello modal</p>
-      </section>
-      <footer class="modal-card-foot">
-        <button class="button" (click)="closeModal()">Close</button>
-      </footer>
-    </div>
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Debes tener en cuenta...</p>
+      <button class="delete" aria-label="close" (click)="closeModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="content">
+        <ul>
+          <li>
+            En circunstancias normales, los bancos solo te financiarán el 80% de
+            la menor de estas cantidades: el precio de compraventa o el precio
+            de tasación
+          </li>
+          <li>
+            Si la tasación es superior al precio de compraventa, no tendrás
+            problema, pero si es inferior, tendrás que aportar la diferencia de
+            tus ahorros
+          </li>
+          <li>
+            En circunstancias normales, la letra de la hipoteca no puede superar
+            el 30% de tus ingresos mensuales
+          </li>
+          <li>
+            En caso de tener otros préstamos, la suma de todos los pagos más la
+            letra de la hipoteca no deben superar el 30% de tus ingresos
+          </li>
+        </ul>
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button" (click)="closeModal()">Close</button>
+    </footer>
   </div>
+</div>
