@@ -1,71 +1,106 @@
 <article class="section calculator">
-  <div class="container">
-    <div class="content">
-      <a class="button title is-5" (click)="toggleInfo(true)">More info...</a>
-    </div>
-  </div>
   <div *ngIf="isInfo">
     <app-info-panel (event)="toggleInfo($event)"></app-info-panel>
   </div>
   <div class="container">
-    <div class="field">
-      <label class="label">Ingresos netos mensuales:</label>
-      <div class="control">
-        <input
-          class="input"
-          type="number"
-          placeholder="1500"
-          min="0"
-          [(ngModel)]="income"
-          (input)="checkSend()"
-        />
+    <div id="visible-fields">
+      <div class="field">
+        <label class="label">Ingresos netos mensuales:</label>
+        <div class="control">
+          <input
+            class="input is-medium"
+            type="number"
+            placeholder="1500"
+            min="0"
+            [(ngModel)]="income"
+            (input)="checkSend()"
+          />
+        </div>
+        <p>
+          ¿No conoces tus ingresos netos?
+          <a
+            href="https://cincodias.elpais.com/herramientas/calculadora-sueldo-neto/"
+            target="blank"
+            >Calcúlalos gratis aquí</a
+          >
+        </p>
       </div>
-      <p>
-        ¿No conoces tus ingresos netos?
-        <a
-          href="https://cincodias.elpais.com/herramientas/calculadora-sueldo-neto/"
-          target="blank"
-          >Calcúlalos gratis aquí</a
+      <div class="field">
+        <label class="label"
+          >Intereses anuales a <em>tipo fijo</em> (TIN):</label
         >
-      </p>
-    </div>
-    <div class="field">
-      <label class="label">Intereses anuales a <em>tipo fijo</em> (TIN):</label>
-      <div class="control">
-        <input
-          class="input"
-          type="number"
-          placeholder="2.0"
-          min="0"
-          [(ngModel)]="ipa"
-          (input)="checkSend()"
-        />
+        <div class="control">
+          <input
+            class="input is-medium"
+            type="number"
+            placeholder="2.0"
+            min="0"
+            [(ngModel)]="ipa"
+            (input)="checkSend()"
+          />
+        </div>
+        <p>
+          ¿No tienes claro el TIN?
+          <a
+            href="https://www.idealista.com/hipotecas/comparador-hipotecas/"
+            target="blank"
+            >Empieza buscando ofertas aquí</a
+          >
+        </p>
       </div>
-      <p>
-        ¿No tienes claro el TIN?
-        <a
-          href="https://www.idealista.com/hipotecas/comparador-hipotecas/"
-          target="blank"
-          >Empieza buscando ofertas aquí</a
-        >
-      </p>
-    </div>
-    <div class="field">
-      <label class="label">Años:</label>
-      <div class="control">
-        <input
-          class="input"
-          type="number"
-          placeholder="30"
-          min="0"
-          [(ngModel)]="years"
-          (input)="checkSend()"
-        />
+      <div class="field">
+        <label class="label">Años:</label>
+        <div class="control">
+          <input
+            class="input is-medium"
+            type="number"
+            placeholder="30"
+            min="0"
+            [(ngModel)]="years"
+            (input)="checkSend()"
+          />
+        </div>
+        <p>A más años pagarás más intereses</p>
       </div>
-      <p>A más años pagarás más intereses</p>
+    </div>
+    <div id="hidden-fields" class="mb-5">
+      <div class="field">
+        <label class="label">Porcentaje de endeudamiento</label>
+        <div class="control">
+          <input
+            class="input"
+            type="number"
+            placeholder="30"
+            min="0"
+            max="100"
+            [(ngModel)]="debtPercent"
+            (input)="checkSend()"
+          />
+        </div>
+        <p class="help">
+          Porcentaje de tus ingresos que vas a dedicar a pagar tu letra
+        </p>
+      </div>
+      <div class="field">
+        <label class="label">Porcentaje de financiación</label>
+        <div class="control">
+          <input
+            class="input"
+            type="number"
+            placeholder="80"
+            min="0"
+            max="100"
+            [(ngModel)]="financePercent"
+            (input)="checkSend()"
+          />
+        </div>
+        <p class="help">
+          Porcentaje del precio de la vivienda que va a financiar el banco
+        </p>
+      </div>
     </div>
     <div class="columns">
-      <div class="column is-10">
+      <div class="column is-8">
         <button
           class="button is-medium is-fullwidth is-primary"
           (click)="calculateMortgage()"
@@ -76,9 +111,16 @@
       </div>
       <div class="column is-2">
         <a
-          class="button is-medium is-fullwidth is-info is-outlined"
+          class="button is-medium is-fullwidth is-dark is-outlined"
           (click)="clearFields()"
           >Borrar</a
+        >
+      </div>
+      <div class="column is-2">
+        <a
+          class="button is-medium is-fullwidth is-info is-outlined"
+          (click)="toggleInfo(true)"
+          >Más info...</a
         >
       </div>
     </div>
@@ -93,12 +135,15 @@
               monthlyPayment ? monthlyPayment.toFixed(2) : (0).toFixed(2)
             }}
             euros</strong
-          >. La cuota máxima es un 30% de tus ingresos netos.
+          >.
         </li>
         <li>
-          El precio máximo de la vivienda que puedes permitirte es:
-          <strong> {{ maxHousePrice.toFixed(2) }} euros</strong>. El banco solo
-          te prestará el 80% de esta cantidad.
+          El precio máximo de la vivienda que puedes permitirte es
+          <strong> {{ maxHousePrice.toFixed(2) }} euros</strong>:
+          <ul>
+            <li>Un {{ mortgage.percent * 100 }}% que te prestará el banco 👉 <strong>{{ (maxHousePrice * (mortgage.percent )).toFixed(2) }}</strong> euros</li>
+            <li>Un {{ 100 - mortgage.percent * 100 }}% que aportarás de tus ahorros 👉 <strong>{{ (maxHousePrice * (1 - mortgage.percent)).toFixed(2) }}</strong> euros</li>
+          </ul>
         </li>
       </ul>
     </div>

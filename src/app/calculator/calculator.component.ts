@@ -12,11 +12,17 @@ export class CalculatorComponent implements OnInit {
   income!: string;
   ipa!: string;
   years!: string;
+  debtPercent: string = '30';
+  financePercent: string = '80';
   monthlyPayment: number;
   maxHousePrice: number;
 
   isInfo: boolean = false;
   canSend: boolean = false;
+
+  get mortgage(): Mortgage {
+    return this.mortgageCalc.mortgage;
+  }
 
   constructor(
     private mortgageCalc: MortgageCalculatorService,
@@ -30,12 +36,12 @@ export class CalculatorComponent implements OnInit {
   }
 
   calculateMortgage(): void {
-    this.monthlyPayment = this.mortgageCalc.calculateMonthlyPayment(parseFloat(this.income), 0.3);
+    this.monthlyPayment = this.mortgageCalc.calculateMonthlyPayment(parseFloat(this.income), parseFloat(this.debtPercent) / 100);
     const mortgage: Mortgage = this.adapter.adapt({
       interestRate: this.ipa,
       years: this.years,
       type: InterestType.fixed,
-      percent: 0.8,
+      percent: parseFloat(this.financePercent) / 100,
       monthlyPayment: this.monthlyPayment,
     });
     const calculatedMortgage = this.mortgageCalc.calculateMaxPrincipal(mortgage);
@@ -49,11 +55,15 @@ export class CalculatorComponent implements OnInit {
     this.monthlyPayment = 0;
     this.maxHousePrice = 0;
     this.canSend = false;
+    this.debtPercent = '30';
+    this.financePercent = '80';
   }
 
   checkSend(): void {
-    if (this.years && this.income && this.ipa) {
+    if (this.years && this.income && this.ipa && this.debtPercent && this.financePercent) {
       this.canSend = true;
+    } else {
+      this.canSend = false;
     }
   }
 

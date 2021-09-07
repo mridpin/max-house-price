@@ -6,6 +6,15 @@ import { Mortgage } from '../models/mortgage';
 })
 export class MortgageCalculatorService {
 
+  private _mortgage!: Mortgage;
+
+  public get mortgage(): Mortgage {
+    return this._mortgage;
+  }
+  public set mortgage(value: Mortgage) {
+    this._mortgage = value;
+  }
+  
   calculateMonthlyPayment(income: number, percentIncome: number): number {
     return income * percentIncome;
   }
@@ -22,7 +31,8 @@ export class MortgageCalculatorService {
     const p = q * a;
 
     mortgage.principal = p;
-    mortgage.maxHousePrice = mortgage.principal / 0.8;
+    mortgage.maxHousePrice = mortgage.principal / mortgage.percent;
+    this._mortgage = mortgage;
     return mortgage;
   }
 
