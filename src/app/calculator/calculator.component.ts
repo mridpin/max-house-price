@@ -26,6 +26,14 @@ export class CalculatorComponent implements OnInit {
     return this.mortgageCalc.mortgage;
   }
 
+  get debtFloat(): Number {
+    return parseFloat(this.debtPercent);
+  }
+
+  get financeFloat(): Number {
+    return parseFloat(this.financePercent);
+  }
+
   constructor(
     private mortgageCalc: MortgageCalculatorService,
     private adapter: MortgageAdapter

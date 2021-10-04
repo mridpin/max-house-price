@@ -64,10 +64,15 @@
       </div>
     </div>
     <div *ngIf="!showExtras" class="field">
-      <a class="label" (click)="toggleExtras(!showExtras)">Ver más opciones ... <i class="fa fa-angle-down" style="font-size:30px"></i></a>
+      <a class="label" (click)="toggleExtras(!showExtras)"
+        >Ver más opciones ...
+        <i class="fa fa-angle-down" style="font-size: 30px"></i
+      ></a>
     </div>
     <div *ngIf="showExtras" class="field">
-      <a class="label" (click)="toggleExtras(!showExtras)">Ocultar ... <i class="fa fa-angle-up" style="font-size:30px"></i></a>
+      <a class="label" (click)="toggleExtras(!showExtras)"
+        >Ocultar ... <i class="fa fa-angle-up" style="font-size: 30px"></i
+      ></a>
     </div>
     <div id="hidden-fields" *ngIf="showExtras" class="mb-5">
       <div class="field">
@@ -86,6 +91,9 @@
         <p class="help">
           Porcentaje de tus ingresos que vas a dedicar a pagar tu letra
         </p>
+        <p *ngIf="debtFloat > 30" class="has-text-danger has-text-weight-semibold">
+          Es improbable que el banco te deje endeudarte más del 30%. <a href="https://www.fintonic.com/blog/cuanto-dinero-debo-destinar-a-la-hipoteca/" target="blank">Más info</a>
+        </p>
       </div>
       <div class="field">
         <label class="label">Porcentaje de financiación</label>
@@ -102,6 +110,9 @@
         </div>
         <p class="help">
           Porcentaje del precio de la vivienda que va a financiar el banco
+        </p>
+        <p *ngIf="financeFloat > 80" class="has-text-danger has-text-weight-semibold">
+          Es improbable que el banco te preste más del 80% <a href="https://www.helpmycash.com/hipotecas/hipotecas-mas-del-80/" target="blank">Más info</a>
         </p>
       </div>
     </div>
@@ -147,8 +158,21 @@
           El precio máximo de la vivienda que puedes permitirte es
           <strong> {{ maxHousePrice.toFixed(2) }} euros</strong>:
           <ul>
-            <li>Un {{ mortgage.percent * 100 }}% que te prestará el banco 👉 <strong>{{ (maxHousePrice * (mortgage.percent )).toFixed(2) }}</strong> euros</li>
-            <li>Un {{ 100 - mortgage.percent * 100 }}% que aportarás de tus ahorros 👉 <strong>{{ (maxHousePrice * (1 - mortgage.percent)).toFixed(2) }}</strong> euros</li>
+            <li>
+              Un {{ mortgage.percent * 100 }}% que te prestará el banco 👉
+              <strong>{{
+                (maxHousePrice * mortgage.percent).toFixed(2)
+              }}</strong>
+              euros
+            </li>
+            <li>
+              Un {{ 100 - mortgage.percent * 100 }}% que aportarás de tus
+              ahorros 👉
+              <strong>{{
+                (maxHousePrice * (1 - mortgage.percent)).toFixed(2)
+              }}</strong>
+              euros
+            </li>
           </ul>
         </li>
       </ul>
