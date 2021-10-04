@@ -17,6 +17,8 @@ export class CalculatorComponent implements OnInit {
   monthlyPayment: number;
   maxHousePrice: number;
 
+  showExtras: boolean = false;
+
   isInfo: boolean = false;
   canSend: boolean = false;
 
@@ -69,5 +71,9 @@ export class CalculatorComponent implements OnInit {
 
   toggleInfo($event: boolean): void {
     this.isInfo = $event;
+  }
+
+  toggleExtras($event: boolean): void {
+    this.showExtras = $event;
   }
 }

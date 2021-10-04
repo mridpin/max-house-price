@@ -63,7 +63,13 @@
         <p>A más años pagarás más intereses</p>
       </div>
     </div>
-    <div id="hidden-fields" class="mb-5">
+    <div *ngIf="!showExtras" class="field">
+      <a class="label" (click)="toggleExtras(!showExtras)">Ver más opciones ... <i class="fa fa-angle-down" style="font-size:30px"></i></a>
+    </div>
+    <div *ngIf="showExtras" class="field">
+      <a class="label" (click)="toggleExtras(!showExtras)">Ocultar ... <i class="fa fa-angle-up" style="font-size:30px"></i></a>
+    </div>
+    <div id="hidden-fields" *ngIf="showExtras" class="mb-5">
       <div class="field">
         <label class="label">Porcentaje de endeudamiento</label>
         <div class="control">
