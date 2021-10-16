@@ -4,8 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { CalculatorComponent } from './calculator/calculator.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './calculator/header/header.component';
+import { FooterComponent } from './calculator/footer/footer.component';
 import { InfoPanelComponent } from './calculator/info-panel/info-panel.component';
 
 @NgModule({
