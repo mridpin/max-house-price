@@ -61,6 +61,9 @@
           />
         </div>
         <p>A más años pagarás más intereses</p>
+        <p *ngIf="yearsFloat > 30" class="has-text-danger has-text-weight-semibold">
+          Es improbable que el banco te conceda un préstamo a más de 30 años. <a href="https://www.rastreator.com/hipotecas/articulos-destacados/hipotecas-40-anos" target="blank">Más info</a>
+        </p>
       </div>
     </div>
     <div *ngIf="!showExtras" class="field">

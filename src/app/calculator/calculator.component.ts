@@ -34,6 +34,10 @@ export class CalculatorComponent implements OnInit {
     return parseFloat(this.financePercent);
   }
 
+  get yearsFloat(): Number {
+    return parseFloat(this.years);
+  }
+
   constructor(
     private mortgageCalc: MortgageCalculatorService,
     private adapter: MortgageAdapter
