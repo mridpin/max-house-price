@@ -145,6 +145,7 @@
       </div>
     </div>
   </div>
+  <!-- todo: make this a result component -->
   <div class="section container" *ngIf="monthlyPayment">
     <div class="content is-large">
       <ul>
@@ -179,6 +180,13 @@
           </ul>
         </li>
       </ul>
+    </div>
+    <div class="column is-2">
+      <a
+        class="button is-medium is-fullwidth is-info is-outlined"
+        (click)="toggleInfo(true)"
+        >Explícame la fórmula...</a
+      >
     </div>
   </div>
 </article>

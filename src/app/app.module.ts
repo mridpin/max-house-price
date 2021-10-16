@@ -7,6 +7,7 @@ import { CalculatorComponent } from './calculator/calculator.component';
 import { HeaderComponent } from './calculator/header/header.component';
 import { FooterComponent } from './calculator/footer/footer.component';
 import { InfoPanelComponent } from './calculator/info-panel/info-panel.component';
+import { FormulaPanelComponent } from './calculator/formula-panel/formula-panel.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { InfoPanelComponent } from './calculator/info-panel/info-panel.component
     CalculatorComponent,
     HeaderComponent,
     FooterComponent,
-    InfoPanelComponent
+    InfoPanelComponent,
+    FormulaPanelComponent
   ],
   imports: [
     BrowserModule,
