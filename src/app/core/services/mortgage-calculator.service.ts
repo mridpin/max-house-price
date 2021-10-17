@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Mortgage } from '../models/mortgage';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class MortgageCalculatorService {
 
   private _mortgage!: Mortgage;

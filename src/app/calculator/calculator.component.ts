@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { InterestType, Mortgage, MortgageAdapter } from '../models/mortgage';
-import { MortgageCalculatorService } from '../services/mortgage-calculator.service';
+import { InterestType, Mortgage, MortgageAdapter } from '../core/models/mortgage';
+import { MortgageCalculatorService } from '../core/services/mortgage-calculator.service';
 
 @Component({
   selector: 'app-calculator',
@@ -90,7 +90,6 @@ export class CalculatorComponent implements OnInit {
   }
 
   toggleFormula($event: boolean): void {
-    console.log(this.isFormula)
     this.isFormula = $event;
   }
 }

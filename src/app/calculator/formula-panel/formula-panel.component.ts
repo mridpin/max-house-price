@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Mortgage } from 'src/app/models/mortgage';
-import { MortgageCalculatorService } from 'src/app/services/mortgage-calculator.service';
+import { Mortgage } from 'src/app/core/models/mortgage';
+import { MortgageCalculatorService } from 'src/app/core/services/mortgage-calculator.service';
 
 @Component({
   selector: 'app-formula-panel',
