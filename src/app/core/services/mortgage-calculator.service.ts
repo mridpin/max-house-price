@@ -12,7 +12,7 @@ export class MortgageCalculatorService {
   public set mortgage(value: Mortgage) {
     this._mortgage = value;
   }
-  
+
   calculateMonthlyPayment(income: number, percentIncome: number): number {
     return income * percentIncome;
   }

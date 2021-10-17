@@ -1,5 +1,5 @@
-import { Injectable } from "@angular/core";
-import { Adapter } from "./adapter";
+import { Injectable } from '@angular/core';
+import { Adapter } from './adapter';
 
 export enum InterestType {
   fixed,
