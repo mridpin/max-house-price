@@ -2,6 +2,9 @@
   <div *ngIf="isInfo">
     <app-info-panel (event)="toggleInfo($event)"></app-info-panel>
   </div>
+  <div *ngIf="isFormula">
+    <app-formula-panel (event)="toggleFormula($event)"></app-formula-panel>
+  </div>
   <div class="container">
     <div id="visible-fields">
       <div class="field">
@@ -61,8 +64,16 @@
           />
         </div>
         <p>A más años pagarás más intereses</p>
-        <p *ngIf="yearsFloat > 30" class="has-text-danger has-text-weight-semibold">
-          Es improbable que el banco te conceda un préstamo a más de 30 años. <a href="https://www.rastreator.com/hipotecas/articulos-destacados/hipotecas-40-anos" target="blank">Más info</a>
+        <p
+          *ngIf="yearsFloat > 30"
+          class="has-text-danger has-text-weight-semibold"
+        >
+          Es improbable que el banco te conceda un préstamo a más de 30 años.
+          <a
+            href="https://www.rastreator.com/hipotecas/articulos-destacados/hipotecas-40-anos"
+            target="blank"
+            >Más info</a
+          >
         </p>
       </div>
     </div>
@@ -94,8 +105,16 @@
         <p class="help">
           Porcentaje de tus ingresos que vas a dedicar a pagar tu letra
         </p>
-        <p *ngIf="debtFloat > 30" class="has-text-danger has-text-weight-semibold">
-          Es improbable que el banco te deje endeudarte más del 30%. <a href="https://www.fintonic.com/blog/cuanto-dinero-debo-destinar-a-la-hipoteca/" target="blank">Más info</a>
+        <p
+          *ngIf="debtFloat > 30"
+          class="has-text-danger has-text-weight-semibold"
+        >
+          Es improbable que el banco te deje endeudarte más del 30%.
+          <a
+            href="https://www.fintonic.com/blog/cuanto-dinero-debo-destinar-a-la-hipoteca/"
+            target="blank"
+            >Más info</a
+          >
         </p>
       </div>
       <div class="field">
@@ -114,8 +133,16 @@
         <p class="help">
           Porcentaje del precio de la vivienda que va a financiar el banco
         </p>
-        <p *ngIf="financeFloat > 80" class="has-text-danger has-text-weight-semibold">
-          Es improbable que el banco te preste más del 80% <a href="https://www.helpmycash.com/hipotecas/hipotecas-mas-del-80/" target="blank">Más info</a>
+        <p
+          *ngIf="financeFloat > 80"
+          class="has-text-danger has-text-weight-semibold"
+        >
+          Es improbable que el banco te preste más del 80%
+          <a
+            href="https://www.helpmycash.com/hipotecas/hipotecas-mas-del-80/"
+            target="blank"
+            >Más info</a
+          >
         </p>
       </div>
     </div>
@@ -181,10 +208,10 @@
         </li>
       </ul>
     </div>
-    <div class="column is-2">
+    <div class="column is-3">
       <a
         class="button is-medium is-fullwidth is-info is-outlined"
-        (click)="toggleInfo(true)"
+        (click)="toggleFormula(true)"
         >Explícame la fórmula...</a
       >
     </div>

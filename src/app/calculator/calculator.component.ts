@@ -18,8 +18,8 @@ export class CalculatorComponent implements OnInit {
   maxHousePrice: number;
 
   showExtras: boolean = false;
-
   isInfo: boolean = false;
+  isFormula: boolean = false;
   canSend: boolean = false;
 
   get mortgage(): Mortgage {
@@ -87,5 +87,10 @@ export class CalculatorComponent implements OnInit {
 
   toggleExtras($event: boolean): void {
     this.showExtras = $event;
+  }
+
+  toggleFormula($event: boolean): void {
+    console.log(this.isFormula)
+    this.isFormula = $event;
   }
 }

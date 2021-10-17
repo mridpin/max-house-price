@@ -1,1 +1,103 @@
-<p>formula-panel works!</p>
+<div class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Sistema de amortización francés</p>
+      <button class="delete" aria-label="close" (click)="closeModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="content">
+        <p>
+          La mayoría de las hipotecas que se conceden para viviendas en España
+          se calculan con el sistema de amortización francés. Este sistema se
+          identifica por dos principales características:
+        </p>
+        <ul>
+          <li>
+            <span class="has-text-weight-bold">Cuotas constantes: </span>La
+            cuota mensual será la misma durante toda la duración del préstamo.
+            Esta cuota está compuesta por los intereses del préstamo y el
+            capital prestado.
+          </li>
+          <li>
+            <span class="has-text-weight-bold"
+              >Amortización en forma de pirámide invertida:
+            </span>
+            Los intereses se calculan en función del capital que queda por
+            devolver, por lo que la proporción de la cuota que se destina a
+            pagar interés se va reduciendo conforme se va devolviendo el
+            préstamo.
+          </li>
+        </ul>
+        <p>
+          La cuota mensual se calcula a partir del capital prestado con la
+          siguiente fórmula:
+        </p>
+        <figure class="image is-flex is-horizontal-center">
+          <img src="./assets/quote_formula.png" alt="formula" />
+        </figure>
+        <p>Donde:</p>
+        <ul>
+          <li>
+            <span class="is-italic">q</span> : cuota mensual de la hipoteca
+          </li>
+          <li>
+            <span class="is-italic">C</span> : capital prestado por el banco
+          </li>
+          <li>
+            <span class="is-italic">i</span> : interés mensual (TIN anual
+            dividido entre 12)
+          </li>
+          <li>
+            <span class="is-italic">n</span> : número de cuotas (años del
+            préstamo multiplicado por 12)
+          </li>
+        </ul>
+        <p>
+          Para esta calculadora, como la cuota ya la sabemos (es el porcentaje
+          de endeudamiento, normalmente 0.3, multiplicado por tus ingresos);
+          despejamos <span class="is-italic">C</span> de la ecuación y nos
+          queda:
+        </p>
+        <figure class="image is-flex is-horizontal-center">
+          <img src="./assets/cap_formula.png" alt="formula" />
+        </figure>
+        <p>Para las cantidades elegidas, los valores son:</p>
+        <ul>
+          <li>
+            <span class="is-italic">q</span> : {{ mortgage.monthlyPayment }} €.
+          </li>
+          <li>
+            <span class="is-italic">C</span> :
+            {{ mortgage.principal?.toFixed(2) }} €, es lo máximo que te va a
+            prestar el banco con tus ingresos.
+          </li>
+          <li>
+            <span class="is-italic">i</span> : {{ mortgage.interestRate }}% TIN
+            anual, dividido entre 12 y expresado como tanto por uno:
+            {{ (mortgage.interestRate / 100 / 12).toFixed(5) }}.
+          </li>
+          <li>
+            <span class="is-italic">n</span> :
+            {{ mortgage.years * 12 }} mensualidades.
+          </li>
+        </ul>
+        <p>
+          En este caso, {{ mortgage.principal?.toFixed(2) }} € es lo máximo que
+          te va a prestar el banco, así que dividimos esta cifra por el
+          porcentaje de financiación (nomalmente 0.8) y así obtenemos el precio
+          máximo de la vivienda que nos podremos permitir.
+        </p>
+        <p>
+          <a
+            href="https://www.rankia.com/blog/mejores-hipotecas/2399623-que-sistema-amortizacion-frances"
+            >Más info y casos de ejemplo ...</a
+          >
+        </p>
+      </div>
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button" (click)="closeModal()">Vale</button>
+    </footer>
+  </div>
+</div>
