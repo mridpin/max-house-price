@@ -3,6 +3,7 @@ import { AppComponent } from './app.component';
 import { CalculatorModule } from './calculator/calculator.module';
 import { FooterComponent } from './calculator/footer/footer.component';
 import { HeaderComponent } from './calculator/header/header.component';
+import { CoreModule } from './core/core.module';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -10,31 +11,28 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
       ],
       imports: [
         CalculatorModule
-      ],
-      providers: [],
+      ]
     }).compileComponents();
   });
 
-  // it('should create the app', () => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   const app = fixture.componentInstance;
-  //   expect(app).toBeTruthy();
-  // });
+  it('should run dummy test', () => {
+    const a = 'aa';
+    expect(a).toEqual('aa');
+  });
 
-  // it(`should have as title 'Cuánto me puedo hipotecar?'`, () => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   const app = fixture.componentInstance;
-  //   expect(app.title).toEqual('Cuánto me puedo hipotecar?');
-  // });
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
 
-  // it('should render title', () => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   fixture.detectChanges();
-  //   const compiled = fixture.nativeElement;
-  //   expect(compiled.querySelector('.content span').textContent).toContain('Cuánto me puedo hipotecar?');
-  // });
+  it(`should have as title 'Cuánto me puedo hipotecar?'`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('Cuánto me puedo hipotecar?');
+  });
 });

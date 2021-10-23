@@ -12,29 +12,29 @@ export class CalculatorComponent implements OnInit {
   income!: string;
   ipa!: string;
   years!: string;
-  debtPercent: string = '30';
-  financePercent: string = '80';
+  debtPercent = '30';
+  financePercent = '80';
   monthlyPayment: number;
   maxHousePrice: number;
 
-  showExtras: boolean = false;
-  isInfo: boolean = false;
-  isFormula: boolean = false;
-  canSend: boolean = false;
+  showExtras = false;
+  isInfo = false;
+  isFormula = false;
+  canSend = false;
 
   get mortgage(): Mortgage {
     return this.mortgageCalc.mortgage;
   }
 
-  get debtFloat(): Number {
+  get debtFloat(): number {
     return parseFloat(this.debtPercent);
   }
 
-  get financeFloat(): Number {
+  get financeFloat(): number {
     return parseFloat(this.financePercent);
   }
 
-  get yearsFloat(): Number {
+  get yearsFloat(): number {
     return parseFloat(this.years);
   }
 

@@ -7,13 +7,11 @@ import { FormulaPanelComponent } from './formula-panel/formula-panel.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
-
-
 @NgModule({
   declarations: [
     CalculatorComponent,
     InfoPanelComponent,
-    FormulaPanelComponent
+    FormulaPanelComponent,
   ],
   imports: [
     CommonModule,

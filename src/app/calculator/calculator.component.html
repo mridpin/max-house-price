@@ -172,7 +172,7 @@
       </div>
     </div>
   </div>
-  <!-- todo: make this a result component -->
+
   <div class="section container" *ngIf="monthlyPayment">
     <div class="content is-large">
       <ul>
@@ -180,7 +180,7 @@
           La cuota mensual máxima que te puedes permitir es:
           <strong
             >{{
-              monthlyPayment ? monthlyPayment.toFixed(2) : (0).toFixed(2)
+              monthlyPayment ? monthlyPayment.toFixed(2) : '0.00'
             }}
             euros</strong
           >.
