@@ -17,6 +17,7 @@
             min="0"
             [(ngModel)]="income"
             (input)="checkSend()"
+            id="incomeInput"
           />
         </div>
         <p>
@@ -40,6 +41,7 @@
             min="0"
             [(ngModel)]="ipa"
             (input)="checkSend()"
+            id="ipaInput"
           />
         </div>
         <p>
@@ -61,6 +63,7 @@
             min="0"
             [(ngModel)]="years"
             (input)="checkSend()"
+            id="yearsInput"
           />
         </div>
         <p>A más años pagarás más intereses</p>
@@ -100,6 +103,7 @@
             max="100"
             [(ngModel)]="debtPercent"
             (input)="checkSend()"
+            id="debtPercentInput"
           />
         </div>
         <p class="help">
@@ -128,6 +132,7 @@
             max="100"
             [(ngModel)]="financePercent"
             (input)="checkSend()"
+            id="financePercentInput"
           />
         </div>
         <p class="help">
