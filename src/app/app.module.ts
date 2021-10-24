@@ -11,7 +11,7 @@ import { HeaderComponent } from './calculator/header/header.component';
     FooterComponent
   ],
   imports: [
-    CalculatorModule
+    CalculatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
