@@ -155,7 +155,7 @@
       <div class="column is-8">
         <button
           class="button is-medium is-fullwidth is-primary"
-          (click)="calculateMortgage()"
+          (click)="submitMortgage()"
           [disabled]="!canSend"
         >
           Calcular
@@ -179,7 +179,7 @@
   </div>
 
   <div class="section container" *ngIf="monthlyPayment">
-    <div class="content is-large">
+    <div class="content is-large" id="result-panel">
       <ul>
         <li>
           La cuota mensual máxima que te puedes permitir es:

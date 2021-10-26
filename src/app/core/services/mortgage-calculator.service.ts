@@ -30,7 +30,6 @@ export class MortgageCalculatorService {
 
     mortgage.principal = p;
     mortgage.maxHousePrice = mortgage.principal / mortgage.percent;
-    this._mortgage = mortgage;
     return mortgage;
   }
 

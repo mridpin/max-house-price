@@ -49,8 +49,12 @@ export class CalculatorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  calculateMortgage(): void {
+  submitMortgage(): void {
     this.monthlyPayment = this.mortgageCalc.calculateMonthlyPayment(parseFloat(this.income), parseFloat(this.debtPercent) / 100);
+    this.calculateMortgage();
+  }
+
+  calculateMortgage(): void {
     const mortgage: Mortgage = this.adapter.adapt({
       interestRate: this.ipa,
       years: this.years,
@@ -58,8 +62,9 @@ export class CalculatorComponent implements OnInit {
       percent: parseFloat(this.financePercent) / 100,
       monthlyPayment: this.monthlyPayment,
     });
-    const calculatedMortgage = this.mortgageCalc.calculateMaxPrincipal(mortgage);
-    this.maxHousePrice = calculatedMortgage.maxHousePrice;
+    this.maxHousePrice = this.mortgageCalc.calculateMaxPrincipal(mortgage).maxHousePrice;
+    mortgage.maxHousePrice = this.maxHousePrice;
+    this.mortgageCalc.mortgage = mortgage;
   }
 
   clearFields(): void {
