@@ -22,9 +22,7 @@ export class CalculatorComponent implements OnInit {
   isFormula = false;
   canSend = false;
 
-  get mortgage(): Mortgage {
-    return this.mortgageCalc.mortgage;
-  }
+  mortgage!: Mortgage;
 
   get debtFloat(): number {
     return parseFloat(this.debtPercent);
@@ -44,6 +42,9 @@ export class CalculatorComponent implements OnInit {
   ) {
     this.monthlyPayment = 0.0;
     this.maxHousePrice = 0.0;
+    this.mortgageCalc.mortgage.subscribe((mortgage: Mortgage) => {
+      this.mortgage = mortgage;
+    });
   }
 
   ngOnInit(): void {
@@ -64,7 +65,6 @@ export class CalculatorComponent implements OnInit {
     });
     this.maxHousePrice = this.mortgageCalc.calculateMaxPrincipal(mortgage).maxHousePrice;
     mortgage.maxHousePrice = this.maxHousePrice;
-    this.mortgageCalc.mortgage = mortgage;
   }
 
   clearFields(): void {

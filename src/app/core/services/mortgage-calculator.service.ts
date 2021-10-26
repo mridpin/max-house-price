@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { Mortgage } from '../models/mortgage';
 
 @Injectable()
 export class MortgageCalculatorService {
 
-  private _mortgage!: Mortgage;
+  $mortgage: Subject<Mortgage>;
 
-  public get mortgage(): Mortgage {
-    return this._mortgage;
+  constructor() {
+    this.$mortgage = new Subject();
   }
-  public set mortgage(value: Mortgage) {
-    this._mortgage = value;
+
+  get mortgage(): Observable<Mortgage> {
+    return this.$mortgage.asObservable();
   }
 
   calculateMonthlyPayment(income: number, percentIncome: number): number {
@@ -30,8 +32,7 @@ export class MortgageCalculatorService {
 
     mortgage.principal = p;
     mortgage.maxHousePrice = mortgage.principal / mortgage.percent;
+    this.$mortgage.next(mortgage);
     return mortgage;
   }
-
-  constructor() { }
 }

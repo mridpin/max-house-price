@@ -11,11 +11,13 @@ export class FormulaPanelComponent implements OnInit {
 
   @Output() event = new EventEmitter<boolean>();
 
-  get mortgage(): Mortgage {
-    return this.mortgageCalc.mortgage;
-  }
+  mortgage!: Mortgage;
 
-  constructor(private mortgageCalc: MortgageCalculatorService) { }
+  constructor(private mortgageCalc: MortgageCalculatorService) {
+    this.mortgageCalc.mortgage.subscribe((mortgage: Mortgage) => {
+      this.mortgage = mortgage;
+    });
+  }
 
   ngOnInit(): void {
   }

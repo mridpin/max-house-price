@@ -114,7 +114,7 @@ describe('CalculatorComponent', () => {
     expect(component.financePercent.toString()).toEqual('0.8');
   });
 
-  it('should update max price with inputs', () => {
+  it('should update max price with inputs', async() => {
     // given
     const hostElement: HTMLElement = fixture.nativeElement;
     const incomeInput: HTMLInputElement = hostElement.querySelector('#incomeInput')! as HTMLInputElement;
@@ -154,6 +154,7 @@ describe('CalculatorComponent', () => {
     expect(service.calculateMaxPrincipal).toHaveBeenCalled();
     expect(component.maxHousePrice).toEqual(expectedPrice);
     const resultDiv: HTMLElement = hostElement.querySelector('#result-panel')! as HTMLElement;
+    fixture.detectChanges();
     expect(resultDiv).toBeTruthy();
   });
 });
