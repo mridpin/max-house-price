@@ -48,6 +48,8 @@ export class CalculatorComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // todo: fix one test
+    // todo: add animations to expandables
   }
 
   submitMortgage(): void {

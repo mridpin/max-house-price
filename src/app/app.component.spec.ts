@@ -33,6 +33,6 @@ describe('AppComponent', () => {
   it(`should have as title 'Cuánto me puedo hipotecar?'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('Cuánto me puedo hipotecar?');
+    expect(app.title).toEqual('Cuánto te puedes hipotecar?');
   });
 });
